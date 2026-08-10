@@ -35,7 +35,7 @@ CREATE DATABASE ovdt1_dw
 ALTER DATABASE ovdt1_dw SET datestyle TO 'SQL, DMY';
 
 -- Passo ERP1 - Criação das tabelas
-
+\c ovtd1_erp
 -- Tabela Cliente 
 create table cliente (
 codigo_cliente bigserial not null,
@@ -772,10 +772,27 @@ FROM numPedido_list, codProduto_list, qtade_list, valorVenda_list,
 --limit 10
 ;
 
+commit;
+
+-- 1. Criar o usuário para acessar as tabelas do ERP. Assim, o aluno não precisa configurar esse database.
+CREATE USER ovtd_user WITH PASSWORD '0vtd!';
+
+-- 2. Permitir conexão ao banco
+GRANT CONNECT ON DATABASE ovtd1_erp TO ovtd_user;
+
+-- 3. Permitir acesso ao schema
+GRANT USAGE ON SCHEMA public TO ovtd_user;
+
+-- 4. Dar leitura em todas as tabelas existentes
+GRANT SELECT ON ALL TABLES IN SCHEMA public TO ovtd_user;
+
+-- 5. Dar leitura também nas sequências, caso necessário
+GRANT SELECT ON ALL SEQUENCES IN SCHEMA public TO ovtd_user;
 -----------------------------------------------------------
 
 --Passo DW1 - Cria dimensao tempo
-
+\c ovtd1_dw
+	
 set lc_time  TO 'pt_BR.UTF-8';
 create table bi_DTempo
 as
@@ -808,7 +825,7 @@ SELECT
 	(datum + (1 - extract(day from datum))::integer + '1 month'::interval)::date - '1 day'::interval AS FimMes
 FROM (
 	-- There are 3 leap years in this range, so calculate 365 * 10 + 3 records
-	SELECT '2022-01-01'::DATE + sequence.day AS datum
+	SELECT '2026-01-01'::DATE + sequence.day AS datum
 	FROM generate_series(0,3652) AS sequence(day)
 	GROUP BY sequence.day
      ) DQ
