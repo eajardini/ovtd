@@ -834,3 +834,16 @@ order by 1;
 
 commit;
 
+-- Atribuo as pemissões de leitura ao DW ao usuário ovtd_user para poder acessar quando da criação dos dashs
+-- 2. Permitir conexão ao banco
+GRANT CONNECT ON DATABASE ovtd1_dw TO ovtd_user;
+
+-- 3. Permitir acesso ao schema
+GRANT USAGE ON SCHEMA public TO ovtd_user;
+
+-- 4. Dar leitura em todas as tabelas existentes
+GRANT SELECT ON ALL TABLES IN SCHEMA public TO ovtd_user;
+
+-- 5. Dar leitura também nas sequências, caso necessário
+GRANT SELECT ON ALL SEQUENCES IN SCHEMA public TO ovtd_user;
+
