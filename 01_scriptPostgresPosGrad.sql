@@ -17,22 +17,22 @@
 
 
 -- Cria banco de dados do ERP
-CREATE DATABASE ovdt1_erp
+CREATE DATABASE ovtd1_erp
     WITH 
     OWNER = postgres
     ENCODING = 'UTF8'    
     CONNECTION LIMIT = -1;
     
-ALTER DATABASE ovdt1_erp SET datestyle TO 'SQL, DMY';
+ALTER DATABASE ovtd1_erp SET datestyle TO 'SQL, DMY';
     
 -- Cria banco de dados do DW
-CREATE DATABASE ovdt1_dw
+CREATE DATABASE ovtd1_dw
     WITH 
     OWNER = postgres
     ENCODING = 'UTF8'    
     CONNECTION LIMIT = -1;
 
-ALTER DATABASE ovdt1_dw SET datestyle TO 'SQL, DMY';
+ALTER DATABASE ovtd1_dw SET datestyle TO 'SQL, DMY';
 
 -- Passo ERP1 - Criação das tabelas
 \c ovtd1_erp
