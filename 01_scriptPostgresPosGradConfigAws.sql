@@ -1,5 +1,5 @@
 -- Rodar esses script para configura a AWS.
--- Ele deve ser executado pelo professor antes de executar o script 01_scriptPostgresPosGrad.sql
+-- Ele deve ser executado pelo professor após executar o script 01_scriptPostgresPosGrad.sql
 -- Caso não for usar a AWS, desconsiderar esse script.
 
 
