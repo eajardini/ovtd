@@ -430,14 +430,14 @@
     <created_date>2023/03/16 14:37:29.445</created_date>
     <modified_user>-</modified_user>
     <modified_date>2023/03/16 14:37:29.445</modified_date>
-    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
+    <key_for_session_key>H4sIAAAAAAAA/wMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
   </notepads>
   <connection>
     <name>ovtd1_dw</name>
-    <server>172.17.0.1</server>
+    <server>localhost</server>
     <type>POSTGRESQL</type>
     <access>Native</access>
     <database>ovtd1_dw</database>
@@ -488,13 +488,13 @@
   </connection>
   <connection>
     <name>ovtd1_erp</name>
-    <server>172.17.0.1</server>
+    <server>168.228.14.45</server>
     <type>POSTGRESQL</type>
     <access>Native</access>
     <database>ovtd1_erp</database>
     <port>5432</port>
-    <username>postgres</username>
-    <password>Encrypted 2be98afc86aa7f2e4cb09a163ca96addb</password>
+    <username>ovtd_user</username>
+    <password>Encrypted 2be98afc86aa7f2e4cb79ce20c886ab9b</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -539,7 +539,7 @@
   </connection>
   <order>
     <hop>
-      <from>Table input</from>
+      <from>Carregar dados de cliente</from>
       <to>Dimension lookup/update</to>
       <enabled>Y</enabled>
     </hop>
@@ -566,14 +566,14 @@
         <lookup>codigo_cliente</lookup>
       </key>
       <date>
-        <name/>
+        <name>codigo_cliente</name>
         <from>date_from</from>
         <to>date_to</to>
       </date>
       <field>
         <name>nome_cliente</name>
         <lookup>nome_cliente</lookup>
-        <update>Insert</update>
+        <update>Punch through</update>
       </field>
       <field>
         <name>endereco</name>
@@ -627,7 +627,7 @@
     </GUI>
   </step>
   <step>
-    <name>Table input</name>
+    <name>Carregar dados de cliente</name>
     <type>TableInput</type>
     <description/>
     <distribute>Y</distribute>
@@ -659,7 +659,7 @@ FROM "public".cliente</sql>
         <name>codigo_cliente</name>
         <length>15</length>
         <precision>0</precision>
-        <origin>Table input</origin>
+        <origin>Carrega dados de cliente</origin>
         <comments>codigo_cliente</comments>
         <conversion_Mask>####0;-####0</conversion_Mask>
         <decimal_symbol>,</decimal_symbol>
@@ -672,7 +672,7 @@ FROM "public".cliente</sql>
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
+        <date_format_locale>pt_BR</date_format_locale>
         <date_format_timezone>America/Sao_Paulo</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -682,7 +682,7 @@ FROM "public".cliente</sql>
         <name>nome_cliente</name>
         <length>40</length>
         <precision>-1</precision>
-        <origin>Table input</origin>
+        <origin>Carrega dados de cliente</origin>
         <comments>nome_cliente</comments>
         <conversion_Mask/>
         <decimal_symbol>,</decimal_symbol>
@@ -695,7 +695,7 @@ FROM "public".cliente</sql>
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
+        <date_format_locale>pt_BR</date_format_locale>
         <date_format_timezone>America/Sao_Paulo</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -705,7 +705,7 @@ FROM "public".cliente</sql>
         <name>endereco</name>
         <length>40</length>
         <precision>-1</precision>
-        <origin>Table input</origin>
+        <origin>Carrega dados de cliente</origin>
         <comments>endereco</comments>
         <conversion_Mask/>
         <decimal_symbol>,</decimal_symbol>
@@ -718,7 +718,7 @@ FROM "public".cliente</sql>
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
+        <date_format_locale>pt_BR</date_format_locale>
         <date_format_timezone>America/Sao_Paulo</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -728,7 +728,7 @@ FROM "public".cliente</sql>
         <name>cidade</name>
         <length>20</length>
         <precision>-1</precision>
-        <origin>Table input</origin>
+        <origin>Carrega dados de cliente</origin>
         <comments>cidade</comments>
         <conversion_Mask/>
         <decimal_symbol>,</decimal_symbol>
@@ -741,7 +741,7 @@ FROM "public".cliente</sql>
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
+        <date_format_locale>pt_BR</date_format_locale>
         <date_format_timezone>America/Sao_Paulo</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -751,7 +751,7 @@ FROM "public".cliente</sql>
         <name>cep</name>
         <length>9</length>
         <precision>-1</precision>
-        <origin>Table input</origin>
+        <origin>Carrega dados de cliente</origin>
         <comments>cep</comments>
         <conversion_Mask/>
         <decimal_symbol>,</decimal_symbol>
@@ -764,7 +764,7 @@ FROM "public".cliente</sql>
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
+        <date_format_locale>pt_BR</date_format_locale>
         <date_format_timezone>America/Sao_Paulo</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -774,7 +774,7 @@ FROM "public".cliente</sql>
         <name>uf</name>
         <length>2</length>
         <precision>-1</precision>
-        <origin>Table input</origin>
+        <origin>Carrega dados de cliente</origin>
         <comments>uf</comments>
         <conversion_Mask/>
         <decimal_symbol>,</decimal_symbol>
@@ -787,7 +787,7 @@ FROM "public".cliente</sql>
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
+        <date_format_locale>pt_BR</date_format_locale>
         <date_format_timezone>America/Sao_Paulo</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
