@@ -836,4 +836,23 @@ DROP TABLE bi_DTempo;
 
 commit;
 
--- Rodar agora o arquivo 01_scriptPostgresPosGradConfigAws.sql para configurar a AWS.
+-- Usando a AWS  
+	-- Rodar agora o arquivo 01_scriptPostgresPosGradConfigAws.sql para configurar a AWS.  
+
+-- Usando outra nuvem
+	-- Rodar os comandos abaixo
+
+-- Conectar no database obtd1_dw
+\c ovtd1_dw
+
+-- 2. Permitir conexão ao banco
+GRANT CONNECT ON DATABASE ovtd1_dw TO ovtd_user;
+
+-- 3. Permitir acesso ao schema
+GRANT USAGE ON SCHEMA public TO ovtd_user;
+
+-- 4. Dar leitura em todas as tabelas existentes
+GRANT SELECT ON ALL TABLES IN SCHEMA public TO ovtd_user;
+
+-- 5. Dar leitura também nas sequências, caso necessário
+GRANT SELECT ON ALL SEQUENCES IN SCHEMA public TO ovtd_user;
